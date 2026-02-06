@@ -1,0 +1,70 @@
+Machine Learning - Lecture Notes
+Chapter 1: Introduction to Neural Networks
+
+Neural networks are computing systems inspired by biological neural networks. 
+A neural network consists of interconnected nodes called neurons organized in layers.
+
+Key Concepts:
+- Input Layer: Receives the initial data
+- Hidden Layers: Process information through weighted connections
+- Output Layer: Produces the final prediction or classification
+- Activation Functions: Introduce non-linearity (ReLU, Sigmoid, Tanh)
+
+Backpropagation Algorithm:
+The backpropagation algorithm is used to train neural networks. It calculates 
+gradients by applying the chain rule, working backwards from the output layer 
+to adjust weights and minimize error.
+
+Chapter 2: Deep Learning
+
+Deep learning involves neural networks with multiple hidden layers. Common 
+architectures include:
+
+1. Convolutional Neural Networks (CNN)
+   - Used for image processing
+   - Convolution layers extract features
+   - Pooling layers reduce dimensionality
+   - Applications: Image classification, object detection
+
+2. Recurrent Neural Networks (RNN)
+   - Process sequential data
+   - Maintain hidden state for temporal dependencies
+   - Applications: Natural language processing, time series prediction
+
+3. Transformers
+   - Attention mechanism focuses on relevant parts of input
+   - Parallel processing unlike RNNs
+   - Applications: BERT, GPT models for language tasks
+
+Chapter 3: Optimization Techniques
+
+Gradient Descent:
+An optimization algorithm that iteratively adjusts parameters to minimize 
+the loss function. Variants include:
+- Batch Gradient Descent
+- Stochastic Gradient Descent (SGD)
+- Mini-batch Gradient Descent
+
+Adam Optimizer:
+Adaptive Moment Estimation combines advantages of AdaGrad and RMSprop.
+It adapts learning rates for each parameter based on first and second 
+moment estimates.
+
+Regularization:
+Techniques to prevent overfitting:
+- L1 Regularization (Lasso): Adds absolute value of weights to loss
+- L2 Regularization (Ridge): Adds squared weights to loss
+- Dropout: Randomly deactivates neurons during training
+- Early Stopping: Halts training when validation performance degrades
+
+Assignment Questions:
+1. Explain the vanishing gradient problem in deep networks
+2. Compare CNN and RNN architectures
+3. Implement backpropagation for a simple 2-layer network
+4. Discuss the role of activation functions
+
+Exam Topics:
+- Neural network fundamentals
+- Training algorithms and optimization
+- Deep learning architectures
+- Practical applications and case studies
