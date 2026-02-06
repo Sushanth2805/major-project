@@ -522,14 +522,6 @@ def chat_interface():
     if st.session_state.current_domain:
         st.caption(f"Domain: {st.session_state.current_domain}")
     
-    # Display API usage
-    col_info1, col_info2 = st.columns(2)
-    with col_info1:
-        st.caption(f"API Calls Used (Session): {st.session_state.api_call_count}")
-    with col_info2:
-        if st.session_state.api_call_count > 20:
-            st.warning(f"⚠️ High API usage ({st.session_state.api_call_count} calls)")
-    
     # Query input with form for better alignment
     st.markdown("**Ask a question:**")
 
@@ -556,8 +548,8 @@ def chat_interface():
         query_hash = RAGPipeline._hash_query(query, st.session_state.current_domain)
         
         with st.spinner("Searching and generating response..."):
-            # Retrieve relevant documents (reduced from k=3 to k=2 to save on context processing)
-            results = st.session_state.vector_store.search(query, k=2)
+            # Retrieve only top result (best relevance score)
+            results = st.session_state.vector_store.search(query, k=1)
             
             if results:
                 # Generate response using RAG with caching
@@ -573,14 +565,13 @@ def chat_interface():
                 st.markdown("### Assistant Response:")
                 st.markdown(response)
                 
-                # Show retrieved context only if results exist
+                # Show best match context only
                 if results:
-                    with st.expander("View Retrieved Context"):
-                        for i, doc in enumerate(results, 1):
-                            st.markdown(f"**Context {i}:**")
-                            st.text(doc['text'][:300] + "...")
-                            st.markdown(f"*Relevance Score: {doc['distance']:.4f}*")
-                            st.markdown("---")
+                    best_match = results[0]
+                    with st.expander("View Source Context"):
+                        st.markdown(f"**Best Match | Relevance: {best_match['distance']:.4f}**")
+                        st.text(best_match['text'][:500])
+                        st.divider()
             else:
                 st.warning("No relevant information found in your documents")
 
