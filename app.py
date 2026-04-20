@@ -33,7 +33,6 @@ load_dotenv()
 # Configure page - MUST be the first Streamlit command
 st.set_page_config(
     page_title="AI Multi-Domain Assistant",
-    page_icon="🤖",
     layout="wide"
 )
 
@@ -407,7 +406,7 @@ def chunk_text(text, chunk_size=500, overlap=100):
 
 def main():
     # Header
-    st.title("🤖 AI-Powered Multi-Domain Knowledge Assistant")
+    st.title("AI-Powered Multi-Domain Knowledge Assistant")
     st.markdown("### Leveraging RAG + Machine Learning for Intelligent Document Analysis")
     
     # Sidebar for file upload and settings
